@@ -32,7 +32,7 @@ public class ParallelJobLuncher implements IParallelJobLuncher {
 		try {
 			// Get the completed jobs
 			for (int i = 0; i < jobs.size(); i++) {
-				// Takes the first available completed job
+				// Takes the next available completed job
 				Future<Object> jobCompleted = completionService.take();
 				// Get the result if needed
 				result = jobCompleted.get();

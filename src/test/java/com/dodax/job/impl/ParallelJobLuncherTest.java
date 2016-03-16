@@ -105,6 +105,7 @@ public class ParallelJobLuncherTest {
 
 	/**
 	 * Test the lunch method with an exception which stop other current jobs.
+	 * The huge number of elements permits to have an exception and to stop current thread jobs.
 	 * 
 	 * @throws ExecutionException
 	 *             Exception from thread execution
@@ -127,6 +128,7 @@ public class ParallelJobLuncherTest {
 		} catch (InterruptedException | ExecutionException e) {
 			anExceptionHappened = true;
 		}
+		assertTrue(anExceptionHappened);
 
 		// Check if there is called and not finished jobs
 		boolean isStartedWithoutResult = false;
@@ -137,7 +139,6 @@ public class ParallelJobLuncherTest {
 			}
 		}
 		// Asserts
-		assertTrue(anExceptionHappened);
 		assertTrue(isStartedWithoutResult);
 	}
 
